@@ -20,10 +20,12 @@
       @include('layouts.metadata')
       @yield('extra-css')
 </head>
-<body class="" >
-  @include('layouts.header')
-  @yield('content')
-  @include('layouts.footer')
+<body>
+  <div id="app">
+    @include('layouts.header')
+    @yield('content')
+    @include('layouts.footer')
+  </div>
   <!-- JavaScript -->
   <script src="{{ asset('/js/app.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
