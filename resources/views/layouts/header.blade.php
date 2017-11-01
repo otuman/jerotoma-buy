@@ -35,7 +35,7 @@
               <li class="{{ set_active('login') }}">
                 <a href="{{ route('login') }}" class="">Login</a>
               </li>
-              <li class="{{ set_active('cart') }}">
+              <li class="{{ set_active('register') }}">
                 <a href="{{ route('register') }}" class="">Register</a>
               </li>
               @else
