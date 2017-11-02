@@ -21,7 +21,7 @@
 
         @if (sizeof(Cart::content()) > 0)
 
-            <table class="table">
+            <table class="bordered responsive-table">
                 <thead>
                     <tr>
                         <th class="table-image"></th>
@@ -36,7 +36,7 @@
                 <tbody>
                     @foreach (Cart::content() as $item)
                     <tr>
-                        <td class="table-image"><a href="{{ url('shop', [$item->model->slug]) }}"><img src="{{ asset('storage/products/' . $item->model->image) }}" alt="product" class="img-responsive cart-image"></a></td>
+                        <td class="table-image"><a href="{{ url('shop', [$item->model->slug]) }}"><img src="{{ asset('storage/products/' . $item->model->image) }}" alt="product" class="responsive-img"></a></td>
                         <td><a href="{{ url('shop', [$item->model->slug]) }}">{{ $item->name }} </a></td>
                         <td>${{ $item->price }}</td>
                         <td>

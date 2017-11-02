@@ -19,6 +19,11 @@
     </title>   <!-- Styles -->
       @include('layouts.metadata')
       @yield('extra-css')
+      <style>
+         .table-image{
+           width:120px;
+         }
+      </style>
 </head>
 <body>
   <div id="app">
@@ -31,5 +36,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
   <script src="https://www.paypalobjects.com/api/checkout.js"></script>
   @yield('extra-js')
+  <script>
+    $(document).ready(function(){
+          $(".button-collapse").sideNav();
+          $(".dropdown-button").dropdown();
+
+    });
+  </script>
 </body>
 </html>

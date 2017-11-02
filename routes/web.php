@@ -23,7 +23,11 @@ Route::resource('shop', 'ProductController', [
     ]
 ]);
 
-Route::resource('cart', 'CartController');
+Route::resource('cart', 'CartController',['names'=>[
+  'index' => 'cart',
+  'store'=>'store',
+  'show'=>'show'
+  ]]);
 Route::delete('emptyCart', 'CartController@emptyCart');
 Route::post('switchToWishlist/{id}', 'CartController@switchToWishlist');
 
