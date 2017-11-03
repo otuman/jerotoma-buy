@@ -1,11 +1,16 @@
-<header>
-
-    <nav>
+     <nav>
        <div class="container">
-         <div class="nav-wrapper blue">
+         <div class="nav-wrapper">
             <a href="{{route('/')}}" class="brand-logo">Logo</a>
             <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+
             <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li class="search">
+                <div class="search-wrapper card">
+                  <input id="search"><i class="material-icons">search</i>
+                  <div class="search-results"></div>
+                </div>
+              </li>
               <li class="{{ set_active('shop') }}"><a href="{{route('shop')}}">Shop</a></li>
               <li class="{{ set_active('wishlist') }}"><a href="{{ url('/wishlist') }}" class=""><i class="small material-icons left" style="margin-right:0px;">favorite</i><span class="badge white-text" data-badge-caption="items">({{ Cart::instance('wishlist')->count(false) }})</span></a></li>
               <li class="{{ set_active('cart') }}"><a href="{{ url('/cart') }}" class=""><i class="small material-icons left" style="margin-right:0px;">shopping_cart</i><span class="badge white-text" data-badge-caption="items">({{ Cart::instance('default')->count(false) }})</span></a></li>
@@ -27,6 +32,7 @@
           </div>
       </div>
   </nav>
+
   <!-- Dropdown Structure -->
   <ul id="dropdown-web-menu" class="dropdown-content">
      @guest
@@ -58,4 +64,3 @@
      <li class="divider"></li>
      <li><a href="#!">three</a></li>
    </ul>
-</header>

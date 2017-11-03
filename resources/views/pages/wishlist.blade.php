@@ -1,13 +1,22 @@
 @extends('layouts.master')
 
 @section('content')
-
+    <nav >
+      <div class="nav-wrapper teal lighten-2 ">
+        <div class="container">
+            <div class="row">
+              <div class="col s12">
+                <a href="{{ url('/') }}" class="breadcrumb">Home</a>
+                <a href="{{ url('shop') }}" class="breadcrumb">Shop</a>
+                <a href="{{ url('wishlist') }}" class="breadcrumb">Wishlist</a>
+              </div>
+            </div>
+        </div>
+    </div>
+    </nav>
     <div class="container">
-        <p><a href="{{ url('shop') }}">Home</a> / Wishlist</p>
         <h1>Your Wishlist</h1>
-
         <hr>
-
         @if (session()->has('success_message'))
             <div class="alert alert-success">
                 {{ session()->get('success_message') }}
@@ -37,7 +46,7 @@
                 <tbody>
                     @foreach (Cart::instance('wishlist')->content() as $item)
                     <tr>
-                        <td class="table-image"><a href="{{ url('shop', [$item->model->slug]) }}"><img src="{{ asset('img/' . $item->model->image) }}" alt="product" class="img-responsive cart-image"></a></td>
+                        <td class="table-image"><a href="{{ url('shop', [$item->model->slug]) }}"><img src="{{ asset('storage/products/' . $item->model->image) }}" alt="product" class="img-responsive cart-image"></a></td>
                         <td><a href="{{ url('shop', [$item->model->slug]) }}">{{ $item->name }}</a></td>
 
                         <td>${{ $item->subtotal }}</td>
