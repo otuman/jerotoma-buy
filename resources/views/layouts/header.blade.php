@@ -20,14 +20,15 @@
               </li>
             </ul>
             <ul class="side-nav" id="mobile-menu">
+              <!-- Dropdown Trigger -->
+              <li><a class="dropdown-button" href="#!" data-activates="dropdown-mobile-menu">
+                 {{Auth::check() ? Auth::user()->firstName : 'My Account' }}<i class="material-icons right">arrow_drop_down</i></a>
+              </li>
               <li class="{{ set_active('shop') }}"><a href="{{route('shop')}}">Shop</a></li>
               <li class="{{ set_active('wishlist') }}"><a href="{{ url('/wishlist') }}" class="">Wishlist ({{ Cart::instance('wishlist')->count(false) }})</a></li>
               <li class="{{ set_active('cart') }}"><a href="{{ url('/cart') }}" class="">Cart ({{ Cart::instance('default')->count(false) }})</a></li>
 
-               <!-- Dropdown Trigger -->
-              <li><a class="dropdown-button" href="#!" data-activates="dropdown-mobile-menu">
-                {{Auth::check() ? Auth::user()->firstName : 'My Account' }}<i class="material-icons right">arrow_drop_down</i></a>
-              </li>
+
             </ul>
           </div>
       </div>
@@ -59,8 +60,25 @@
   </ul>
      <!-- Dropdown Structure -->
    <ul id="dropdown-mobile-menu" class="dropdown-content">
-     <li><a href="#!">one</a></li>
-     <li><a href="#!">two</a></li>
-     <li class="divider"></li>
-     <li><a href="#!">three</a></li>
+     @guest
+     <li class="{{ set_active('login') }}">
+       <a href="{{ route('login') }}" class="">Login</a>
+     </li>
+     <li class="{{ set_active('register') }}">
+       <a href="{{ route('register') }}" class="">Register</a>
+     </li>
+     @else
+       <li class="{{ set_active('logout') }}">
+           <a href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+               Logout
+           </a>
+           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+               {{ csrf_field() }}
+           </form>
+       </li>
+     @endguest
+    <li class="divider"></li>
+    <li><a href="#!">Support</a></li>
    </ul>
