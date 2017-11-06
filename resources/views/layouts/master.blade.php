@@ -20,12 +20,13 @@
       @include('layouts.metadata')
       @yield('extra-css')
       <style>
-        
+
       </style>
 </head>
 <body>
   <div id="app">
     @include('layouts.header')
+    @include('layouts.breadcrumb')
     @yield('content')
     @include('layouts.footer')
   </div>

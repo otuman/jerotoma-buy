@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use Illuminate\Http\Response;
 use App\Product;
 
 class ProductController extends Controller
@@ -19,7 +19,10 @@ class ProductController extends Controller
         $products = Product::all();
         return view('pages.shop')->with('products', $products);
     }
-
+    public function getProducts(){
+       $products = Product::all()->chunk(4);
+       return response()->json($products);
+    }
 
     /**
      * Display the specified resource.

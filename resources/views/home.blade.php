@@ -1,18 +1,12 @@
 @extends('layouts.master')
-
+@section('breadcrumb')
+   <div class="col m8 offset-m2">
+      <app-search></app-search>
+   </div>
+@endsection
 @section('content')
-    <div class="container">
-        <div class="row">
-          <div class="col m12">
-              <home-sliders/> <!--Vue js component   https://alligator.io/vuejs/component-lifecycle/ -->
-          </div>
-        </div>
-        <div class="row">
-           <div class="col m6">
-
-           </div>
-        </div>
-   </div> <!-- end container -->
+        <app-home></app-home>  <!--Vue js component   https://alligator.io/vuejs/component-lifecycle/ -->
+        <products></products>
 @endsection
 @section('extra-js')
     <script>

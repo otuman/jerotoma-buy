@@ -1,19 +1,13 @@
 @extends('layouts.master')
 
+@section('breadcrumb')
+   <div class="col s12">
+      <a href="{{ url('/') }}" class="breadcrumb">Home</a>
+      <a href="{{ url('shop') }}" class="breadcrumb">Shop</a>
+      <a href="{{ url('wishlist') }}" class="breadcrumb">Wishlist</a>
+   </div>
+@endsection
 @section('content')
-    <nav >
-      <div class="nav-wrapper teal lighten-2 ">
-        <div class="container">
-            <div class="row">
-              <div class="col s12">
-                <a href="{{ url('/') }}" class="breadcrumb">Home</a>
-                <a href="{{ url('shop') }}" class="breadcrumb">Shop</a>
-                <a href="{{ url('wishlist') }}" class="breadcrumb">Wishlist</a>
-              </div>
-            </div>
-        </div>
-    </div>
-    </nav>
     <div class="container">
         <h1>Your Wishlist</h1>
         <hr>

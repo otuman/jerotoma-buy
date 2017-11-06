@@ -17,7 +17,6 @@ Route::get('home', 'HomeController@index')->name('home');
 Route::get('/','HomeController@index')->name('/');
 
 Route::resource('shop', 'ProductController', [
-  'only' => ['index', 'show'],
   'names'=>[
     'index' => 'shop',
     ]
@@ -53,3 +52,5 @@ Route::group(['prefix' => 'admin'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('products','ProductController@getProducts')->name('products');
