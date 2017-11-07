@@ -53252,6 +53252,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mounted: function mounted() {
     //console.log('notification component.')
   },
+
+  methods: {
+    imgProcessedUrl: function imgProcessedUrl(urlPart) {
+      var host = window.location.origin;
+      return host + '/storage/products/' + urlPart;
+    },
+    processedUrl: function processedUrl(urlPart) {
+      var host = window.location.origin;
+      return host + '/shop/' + urlPart;
+    }
+  },
   created: function created() {
     var _this = this;
 
@@ -53282,7 +53293,23 @@ var render = function() {
         _vm._l(chunk, function(product) {
           return _c("div", { staticClass: "col m3" }, [
             _c("div", { staticClass: "card" }, [
-              _vm._m(0, true),
+              _c(
+                "div",
+                {
+                  staticClass: "card-image waves-effect waves-block waves-light"
+                },
+                [
+                  _c("a", { attrs: { href: _vm.processedUrl(product.slug) } }, [
+                    _c("img", {
+                      staticClass: "responsive-img activator",
+                      attrs: {
+                        src: _vm.imgProcessedUrl(product.image),
+                        alt: "product"
+                      }
+                    })
+                  ])
+                ]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "card-content" }, [
                 _c(
@@ -53296,7 +53323,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(1, true)
+                _vm._m(0, true)
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "card-reveal" }, [
@@ -53314,7 +53341,7 @@ var render = function() {
                 _c("p", [_vm._v(_vm._s(product.name))])
               ]),
               _vm._v(" "),
-              _vm._m(2, true)
+              _vm._m(1, true)
             ])
           ])
         })
@@ -53323,23 +53350,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-image waves-effect waves-block waves-light" },
-      [
-        _c("a", { attrs: { href: "#" } }, [
-          _c("img", {
-            staticClass: "responsive-img activator",
-            attrs: { src: "", alt: "product" }
-          })
-        ])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -53483,15 +53493,20 @@ var render = function() {
         attrs: { id: "search", type: "text", required: "" },
         domProps: { value: _vm.search },
         on: {
-          keyup: function($event) {
-            if (
-              !("button" in $event) &&
-              _vm._k($event.keyCode, "enter", 13, $event.key)
-            ) {
-              return null
+          keyup: [
+            function($event) {
+              _vm.searchData()
+            },
+            function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "enter", 13, $event.key)
+              ) {
+                return null
+              }
+              _vm.searchData()
             }
-            _vm.searchData()
-          },
+          ],
           input: function($event) {
             if ($event.target.composing) {
               return

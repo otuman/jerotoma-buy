@@ -1,7 +1,7 @@
 <template>
    <div class="">
       <div class="input-field">
-         <input id="search" v-model="search" v-on:keyup.enter="searchData()" type="text" required>
+         <input id="search" v-model="search" v-on:keyup="searchData()" v-on:keyup.enter="searchData()" type="text" required>
       </div>
    </div>
 </template>

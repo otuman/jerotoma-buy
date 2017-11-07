@@ -4,7 +4,7 @@
             <div class="col m3" v-for="product in chunk">
              <div class="card">
                  <div class="card-image waves-effect waves-block waves-light">
-                     <a href="#"><img src="" alt="product" class="responsive-img activator"></a>
+                     <a v-bind:href="processedUrl(product.slug)"><img v-bind:src="imgProcessedUrl(product.image)" alt="product" class="responsive-img activator"></a>
                  </div> <!-- end caption -->
                  <div class="card-content">
                    <span class="activator grey-text text-darken-4">{{product.name }}<i class="material-icons right">more_vert</i></span>
@@ -25,21 +25,31 @@
 </template>
 <script>
     export default {
-        data(){
+         data(){
           return {
             products:[]
           }
-        },
-        mounted() {
+         },
+         mounted() {
             //console.log('notification component.')
-        },
-       created(){
-          axios.get('/products').then(response=>{
+         },
+         methods:{
+           imgProcessedUrl: function(urlPart){
+             var host = window.location.origin;
+             return host+'/storage/products/'+urlPart;
+           },
+           processedUrl:function(urlPart){
+             var host = window.location.origin;
+             return host+'/shop/'+urlPart;
+           }
+         },
+         created(){
+            axios.get('/products').then(response=>{
 
-              this.products = response.data;
-               console.log(this.products);
-               //console.log(response);
-          });
-       }
+                this.products = response.data;
+                 console.log(this.products);
+                 //console.log(response);
+            });
+         }
     }
 </script>
