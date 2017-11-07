@@ -20,14 +20,23 @@
       @include('layouts.metadata')
       @yield('extra-css')
       <style>
-
+            .shadow-wrapper{
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background-color:rgba(0, 0, 0, 0.7);
+              z-index:90;
+              overflow:hidden;
+              display: none;
+            }
       </style>
 </head>
 <body>
   <div id="app">
     @include('layouts.header')
     @include('layouts.breadcrumb')
-    @yield('content')
+    <div class="shadow-wrapper"></div>
+     @yield('content')
     @include('layouts.footer')
   </div>
   <!-- JavaScript -->
@@ -40,8 +49,13 @@
           $(".button-collapse").sideNav();
           $(".dropdown-button").dropdown();
           $('select').material_select();
-
-    });
+          $("#search").blur(function(){
+               $('.shadow-wrapper').css("display", "none").fadeOut(2000);
+            });
+          $("#search").focusin(function(){
+              $('.shadow-wrapper').css("display", "block").fadeIn(2000);;
+          });
+        });
   </script>
 </body>
 </html>

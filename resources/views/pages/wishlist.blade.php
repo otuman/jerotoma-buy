@@ -1,11 +1,14 @@
 @extends('layouts.master')
 
 @section('breadcrumb')
-   <div class="col s12">
+   <div class="col m5">
       <a href="{{ url('/') }}" class="breadcrumb">Home</a>
       <a href="{{ url('shop') }}" class="breadcrumb">Shop</a>
       <a href="{{ url('wishlist') }}" class="breadcrumb">Wishlist</a>
    </div>
+    <div class="col m7">
+       <app-search></app-search>
+    </div>
 @endsection
 @section('content')
     <div class="container">

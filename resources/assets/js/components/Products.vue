@@ -4,7 +4,7 @@
             <div class="col m3" v-for="product in chunk">
              <div class="card">
                  <div class="card-image waves-effect waves-block waves-light">
-                     <a v-bind:href="processedUrl(product.slug)"><img v-bind:src="imgProcessedUrl(product.image)" alt="product" class="responsive-img activator"></a>
+                     <a v-bind:href="processSlugURL(product.slug)"><img v-bind:src="processImageURL(product.image)" alt="product" class="responsive-img activator"></a>
                  </div> <!-- end caption -->
                  <div class="card-content">
                    <span class="activator grey-text text-darken-4">{{product.name }}<i class="material-icons right">more_vert</i></span>
@@ -34,11 +34,11 @@
             //console.log('notification component.')
          },
          methods:{
-           imgProcessedUrl: function(urlPart){
+           processImageURL: function(urlPart){
              var host = window.location.origin;
              return host+'/storage/products/'+urlPart;
            },
-           processedUrl:function(urlPart){
+           processSlugURL:function(urlPart){
              var host = window.location.origin;
              return host+'/shop/'+urlPart;
            }

@@ -19,16 +19,25 @@ class ProductController extends Controller
         $products = Product::all();
         return view('pages.shop')->with('products', $products);
     }
+    /**
+     * Display the specified resource.
+     *
+     * @param  string  $slug
+     * @return \Illuminate\Http\Response
+     */
     public function getProducts(){
        $products = Product::all()->chunk(4);
        return response()->json($products);
     }
+    /**
+     * Display the specified resource.
+     *
+     * @param  string  $slug
+     * @return \Illuminate\Http\Response
+     */
     public function getSearch(Request $request){
-      $data = array(
-        's'=>$request->search,
-        'message'=>'Thank for using this'
-      );
-      return response()->json($data);
+
+      return Product::search($request->search)->get();
     }
     /**
      * Display the specified resource.

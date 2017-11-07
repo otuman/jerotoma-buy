@@ -2,6 +2,16 @@
 @section('title')
   Checkout Response
 @endsection
+@section('breadcrumb')
+   <div class="col m5">
+      <a href="{{ url('/') }}" class="breadcrumb">Home</a>
+      <a href="{{ url('shop') }}" class="breadcrumb">Shop</a>
+      <a href="{{ url('checkout') }}" class="breadcrumb">Checkout</a>
+   </div>
+    <div class="col m7">
+       <app-search></app-search>
+    </div>
+@endsection
 @section('content')
     <div class="container">
         <div class="page-header text-center">

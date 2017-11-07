@@ -169,6 +169,7 @@ return [
          */
          Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
          Ixudra\Curl\CurlServiceProvider::class,
+         Laravel\Scout\ScoutServiceProvider::class,
        /*
          * Application Service Providers...
          */
