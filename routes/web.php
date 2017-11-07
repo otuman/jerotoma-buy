@@ -54,3 +54,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('products','ProductController@getProducts')->name('products');
+Route::get('search','ProductController@getSearch')->name('search');
+Route::post('search','ProductController@getSearch')->name('search');

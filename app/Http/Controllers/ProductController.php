@@ -23,7 +23,13 @@ class ProductController extends Controller
        $products = Product::all()->chunk(4);
        return response()->json($products);
     }
-
+    public function getSearch(Request $request){
+      $data = array(
+        's'=>$request->search,
+        'message'=>'Thank for using this'
+      );
+      return response()->json($data);
+    }
     /**
      * Display the specified resource.
      *

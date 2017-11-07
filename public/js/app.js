@@ -53460,13 +53460,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
   mounted: function mounted() {
-    //console.log('notification component.')
+    console.log('notification component.');
   },
   created: function created() {},
 
   methods: {
     searchData: function searchData() {
-      console.log(this.search);
+      // console.log(this.search);
+      axios.post('/search', {
+        search: this.search
+      }).then(function (response) {
+        console.log(response.data);
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
   }
 });
