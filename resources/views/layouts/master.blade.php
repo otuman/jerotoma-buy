@@ -24,7 +24,7 @@
               position: absolute;
               width: 100%;
               height: 100%;
-              background-color:rgba(0, 0, 0, 0.7);
+              background-color:rgba(0, 0, 0, 0.4);
               z-index:90;
               overflow:hidden;
               display: none;
@@ -46,13 +46,13 @@
   @yield('extra-js')
   <script>
     $(document).ready(function(){
-          $(".button-collapse").sideNav();
-          $(".dropdown-button").dropdown();
+          $('.button-collapse').sideNav();
+          $('.dropdown-button').dropdown();
           $('select').material_select();
-          $("#search").blur(function(){
+          $('#search').blur(function(){
                $('.shadow-wrapper').css("display", "none").fadeOut(2000);
             });
-          $("#search").focusin(function(){
+          $('#search').focusin(function(){
               $('.shadow-wrapper').css("display", "block").fadeIn(2000);;
           });
         });

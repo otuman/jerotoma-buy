@@ -69,7 +69,7 @@
 
     }
 </script>
-<style>
+<style scoped>
   #search{
     margin-right: 20px;
     padding-left:8px;

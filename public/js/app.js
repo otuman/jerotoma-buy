@@ -53413,7 +53413,7 @@ var __vue_template__ = __webpack_require__(57)
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-48af2888"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -53457,13 +53457,13 @@ var content = __webpack_require__(52);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(54)("4fa7555e", content, false);
+var update = __webpack_require__(54)("33ffffb0", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-48af2888\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./Search.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-48af2888\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./Search.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-48af2888\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./Search.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-48af2888\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./Search.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -53481,7 +53481,7 @@ exports = module.exports = __webpack_require__(53)(undefined);
 
 
 // module
-exports.push([module.i, "\n#search{\n    margin-right: 20px;\n    padding-left:8px;\n    width:90%;\n    height: 25px;\n}\n#search:focus{\n    border-bottom: 1px solid #ee6e73;\n    -webkit-box-shadow: 0 1px 0 0 #ee6e73;\n            box-shadow: 0 1px 0 0 #ee6e73;\n    webkit box-shadow:0 1px 0 0 #ee6e73;\n}\n#search, .search-wrapper, .card{\n    color: rgba(0, 0, 0, 0.7);\n    font-size:20px;\n}\n.search-wrapper{\n    padding-left: 15px;\n    padding-right: 15px;\n    border-radius:10px;\n    background-color: #FFF;\n    width: auto;\n    height: 56px;\n    margin-top: 5px;\n}\n.search-panel{\n    position: absolute;\n    right:auto;\n    padding: 10px;\n    margin: 0.5rem 0 1rem 0;\n    border-radius: 2px;\n    background-color: #fff;\n    width: 50rem;\n    z-index: 200;\n}\n.aligolia{\n    width:auto;\n    height:15px;\n}\n.list-aligoria{\n     width:auto;\n     height:20px;\n}\n.collection .collection-item.list-aligoria {\n    min-height: 50px;\n    padding-left: 72px;\n    position: relative;\n}\n", ""]);
+exports.push([module.i, "\n#search[data-v-48af2888]{\n    margin-right: 20px;\n    padding-left:8px;\n    width:90%;\n    height: 25px;\n}\n#search[data-v-48af2888]:focus{\n    border-bottom: 1px solid #ee6e73;\n    -webkit-box-shadow: 0 1px 0 0 #ee6e73;\n            box-shadow: 0 1px 0 0 #ee6e73;\n    webkit box-shadow:0 1px 0 0 #ee6e73;\n}\n#search[data-v-48af2888], .search-wrapper[data-v-48af2888], .card[data-v-48af2888]{\n    color: rgba(0, 0, 0, 0.7);\n    font-size:20px;\n}\n.search-wrapper[data-v-48af2888]{\n    padding-left: 15px;\n    padding-right: 15px;\n    border-radius:10px;\n    background-color: #FFF;\n    width: auto;\n    height: 56px;\n    margin-top: 5px;\n}\n.search-panel[data-v-48af2888]{\n    position: absolute;\n    right:auto;\n    padding: 10px;\n    margin: 0.5rem 0 1rem 0;\n    border-radius: 2px;\n    background-color: #fff;\n    width: 50rem;\n    z-index: 200;\n}\n.aligolia[data-v-48af2888]{\n    width:auto;\n    height:15px;\n}\n.list-aligoria[data-v-48af2888]{\n     width:auto;\n     height:20px;\n}\n.collection .collection-item.list-aligoria[data-v-48af2888] {\n    min-height: 50px;\n    padding-left: 72px;\n    position: relative;\n}\n", ""]);
 
 // exports
 
