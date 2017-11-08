@@ -15,8 +15,8 @@
                    <p>{{ product.name }}</p>
                  </div>
                  <div class="card-action">
-                   <a class="btn-floating btn waves-effect waves-light red"><i class="large material-icons">add_shopping_cart</i></a>
-                   <a class="btn-floating btn waves-effect waves-light red right"><i class="large material-icons">favorite</i></a>
+                   <a class="btn-floating btn waves-effect waves-light red" @click="addProductToCart(product)"><i class="large material-icons">add_shopping_cart</i></a>
+                   <a class="btn-floating btn waves-effect waves-light red right" @click="addProductToWishlist(product)"><i class="large material-icons">favorite</i></a>
                  </div>
              </div> <!-- end thumbnail -->
             </div>
@@ -24,30 +24,52 @@
     </div>
 </template>
 <script>
+    var home_url = window.location.origin;
+    console.log(home_url);
     export default {
          data(){
           return {
-            products:[]
+            products:[],
+            _host: home_url
           }
          },
          mounted() {
             //console.log('notification component.')
          },
          methods:{
-           processImageURL: function(urlPart){
-             var host = window.location.origin;
-             return host+'/storage/products/'+urlPart;
+           processImageURL:(urlPart)=>{
+             return home_url+'/storage/products/'+urlPart;
            },
-           processSlugURL:function(urlPart){
-             var host = window.location.origin;
-             return host+'/shop/'+urlPart;
-           }
+           processSlugURL:(urlPart)=>{
+
+              return home_url+'/shop/'+urlPart;
+           },
+           addProductToWishlist:(product)=>{
+             console.log(product.id);
+           },
+           addProductToCart:(product)=>{
+             console.log(product.price);
+             console.log(product.image);
+             console.log(product.name);
+             console.log(product.id);
+             axios.post('/cart',{
+               'id':product.id,
+               'quantity': 1,
+               'name':product.name,
+               'price':product.price
+             }).then((response)=>{
+              // console.log(response.data);
+               if(response.data.success){
+                 location.assign(home_url+'/cart');
+               }
+             });
+          }
          },
          created(){
-            axios.get('/products').then(response=>{
+            axios.get('/products').then((response)=>{
 
                 this.products = response.data;
-                 console.log(this.products);
+                // console.log(this.products);
                  //console.log(response);
             });
          }

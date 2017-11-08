@@ -2,14 +2,11 @@
 @section('title')
     {{ config('app.name', 'Kings Pizza | The Best Pizza in Town') }}
 @endsection
-@section('breadcrumb')
-   <div class="col m5">
-      <a href="{{ url('/') }}" class="breadcrumb">Home</a>
-      <a href="{{ url('shop') }}" class="breadcrumb">Shop</a>      
+@section('below-header')
+   <div class="col m8 offset-m2">
+      <app-search></app-search>
    </div>
-    <div class="col m7">
-       <app-search></app-search>
-    </div>
+@endsection
 @endsection
 @section('content')
 
@@ -44,8 +41,28 @@
                               <p>{{ $product->name }}</p>
                             </div>
                             <div class="card-action">
-                              <a class="btn-floating btn waves-effect waves-light red"><i class="large material-icons">add_shopping_cart</i></a>
-                              <a class="btn-floating btn waves-effect waves-light red right"><i class="large material-icons">favorite</i></a>
+                              <div class="row">
+                                 <div class="col m12">
+                                   <form action="{{ url('/cart') }}" method="POST">
+                                       {!! csrf_field() !!}
+                                       <input type="hidden" name="id" value="{{ $product->id }}">
+                                       <input type="hidden" name="name" value="{{ $product->name }}">
+                                       <input type="hidden" name="price" value="{{ $product->price }}">
+                                       <button class="btn-floating btn waves-effect waves-light red" type="submit" name="action" style="float:left; margin-right:10px;">
+                                         <i class="material-icons small">add_shopping_cart</i>
+                                       </button>
+                                   </form>
+                                   <form action="{{ url('/wishlist') }}" method="POST">
+                                       {!! csrf_field() !!}
+                                       <input type="hidden" name="id" value="{{ $product->id }}">
+                                       <input type="hidden" name="name" value="{{ $product->name }}">
+                                       <input type="hidden" name="price" value="{{ $product->price }}">
+                                       <button class="btn-floating btn waves-effect waves-light red right"  type="submit" name="action">
+                                         <i class="material-icons small">favorite</i>
+                                       </button>
+                                   </form>
+                                 </div>
+                              </div>
                             </div>
                         </div> <!-- end thumbnail -->
                     </div> <!-- end col-md-3 -->

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('breadcrumb')
+@section('below-header')
    <div class="col m8 offset-m2">
       <app-search></app-search>
    </div>

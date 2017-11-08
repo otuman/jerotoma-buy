@@ -111,7 +111,7 @@ class CheckoutController extends Controller
          //$data = array( 'foz' => 'baz' )
          //$url = 'http://www.foo.com/bar'
      $jsonData = $this->executePaymant($url, $data, $headers);
-      //Log::info($jsonData);
+      Log::info($jsonData);
        //Log::info($accesstoken);
       if(($jsonData['state'] == 'approved') && ($jsonData['payer']['status'] == 'VERIFIED') ){
          $order  = Order::find($jsonData['transactions'][0]['invoice_number']);

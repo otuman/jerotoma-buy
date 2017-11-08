@@ -1,6 +1,6 @@
 <template>
    <div v-bind:class="{'search-wrapper':!search.hasOutput,'card-panel search-panel':search.hasOutput}">
-      <div class="input-field">
+      <div class="">
         <i class="material-icons right prefix">search</i>
         <input id="search" v-model="search.searchKeyWord" v-on:keyup="searchData()" v-on:keyup.enter="searchData()" type="text" placeholder="Search products" required>
       </div>
@@ -73,9 +73,11 @@
   #search{
     margin-right: 20px;
     padding-left:8px;
-    width:90%;
-    height: 25px;
-  }
+    margin-bottom: 15px !important;
+    width: 85%;
+    height: 40px;
+    background-color: #FFF;
+   }
   #search:focus{
     border-bottom: 1px solid #ee6e73;
     box-shadow: 0 1px 0 0 #ee6e73;
@@ -88,12 +90,12 @@
   .search-wrapper{
     padding-left: 15px;
     padding-right: 15px;
-    border-radius:10px;
+    border-radius: 10px;
     background-color: #FFF;
     width: auto;
-    height: 56px;
-    margin-top: 5px;
-  }
+    height: 40px;
+    margin-top: 12px;
+   }
   .search-panel{
     position: absolute;
     right:auto;

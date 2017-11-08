@@ -49,6 +49,7 @@
           $('.button-collapse').sideNav();
           $('.dropdown-button').dropdown();
           $('select').material_select();
+          Materialize.updateTextFields();
           $('#search').blur(function(){
                $('.shadow-wrapper').css("display", "none").fadeOut(2000);
             });

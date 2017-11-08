@@ -2,15 +2,10 @@
 @section('title')
   Product - {{ $product->name }}
 @endsection
-@section('breadcrumb')
-   <div class="col m5">
-      <a href="{{ url('/') }}" class="breadcrumb">Home</a>
-      <a href="{{ url('shop') }}" class="breadcrumb">Shop</a>
-      <a href="{{ url('checkout') }}" class="breadcrumb">Checkout</a>
+@section('below-header')
+   <div class="col m8 offset-m2">
+      <app-search></app-search>
    </div>
-    <div class="col m7">
-       <app-search></app-search>
-    </div>
 @endsection
 @section('content')
 

@@ -1,5 +1,5 @@
 <?php
-
+//package https://github.com/Crinsane/LaravelShoppingcart
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -29,15 +29,39 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $duplicates = Cart::search(function ($cartItem, $rowId) use ($request) {
-            return $cartItem->id === $request->id;
-        });
+
+         $duplicates = Cart::search(function($cartItem, $rowId) use ($request) {
+                if($cartItem->id === $request->id){
+
+                   $quantity = $cartItem->qty + $request->quantity;
+                   Cart::update($rowId, $quantity);
+                   session()->flash('success_message', 'Quantity was updated successfully!');
+                   return true;
+                 }
+                  return false;
+          });
 
         if (!$duplicates->isEmpty()) {
-            return redirect('cart')->withSuccessMessage('Item is already in your cart!');
+
+           if($request->ajax()){
+                return response()->json([
+                  'success' => true,
+                  'message'=> 'Quantity was updated successfully!'
+                ]);
+            }
+
+          return redirect('cart')->withSuccessMessage('Item is already in your cart!');
         }
 
         Cart::add($request->id, $request->name, 1, $request->price)->associate('App\Product');
+
+        if($request->ajax()){
+             return response()->json([
+               'success' => true,
+               'message'=> 'Item was added to your cart!'
+             ]);
+        }
+
         return redirect('cart')->withSuccessMessage('Item was added to your cart!');
     }
 

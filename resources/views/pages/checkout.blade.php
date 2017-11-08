@@ -2,30 +2,34 @@
 @section('title')
   Checkout
 @endsection
+@section('below-header')
+   <div class="col m8 offset-m2">
+      <app-search></app-search>
+   </div>
+@endsection
 @section('content')
 
     <div class="container">
         <div class="page-header text-center">
-           <h1>Checkout</h1>
+           <h2>Checkout</h3>
         </div>
-        <p><a href="{{ url('shop') }}">Home</a> / checkout</p>
-
-       @if(sizeof(Cart::content()) > 0)
-            <div class="row">
-              <div class="col-md-12">
-                <div class="panel-group">
-                  <div class="panel panel-default">
-                    <div class="panel-heading"><h3>Shipping Details</h3></div>
-                    <div class="panel-body">
+        @if(sizeof(Cart::content()) > 0)
+            <div class="row" style="margin-bottom:0">
+              <div class="col m12">
+                  <div class="card-panel">
+                    <div class="card-title">Shipping Details</div>
+                    <hr>
+                    <div class="card-content">
                         <form data-toggle="validator" role="form" id="shipping-form">
                         @include('pages.shipping-form')
                         </form>
                     </div>
                   </div>
-                  <div class="panel panel-default">
-                    <div class="panel-heading">Product(s)</div>
-                    <div class="panel-body">
-                      <table class="table table-hover">
+                  <div class="card-panel">
+                    <div class="card-title">Product(s)</div>
+                    <hr>
+                    <div class="card-content">
+                      <table class="table striped bordered">
                           <thead>
                               <tr>
                                    <th>Name</th>
@@ -48,16 +52,16 @@
                       </table>
                     </div>
                   </div>
-                </div>
             </div>
         </div>
         <div class="row">
-                <div class="col-md-6 col-md-offset-6">
-                  <div class="panel panel-default">
-                  <div class="panel-heading">Order Summary</div>
-                  <div class="panel-body">
+                <div class="col m6 s12 offset-m6">
+                  <div class="card-panel">
+                  <div class="card-title">Order Summary</div>
+                  <hr>
+                  <div class="card-content">
                     <div class="table-responsive">
-                          <table class="table">
+                          <table class="table table striped bordered">
                             <tbody>
                               <tr>
                                  <td class="">Subtotal :</td>
@@ -79,18 +83,19 @@
              </div>
           </div>
           <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col m6 offset-m3">
              <div id="inform-user" class="alert alert-danger" style="display:none;">
                  <strong>Validation!</strong> Please make sure all required field aren't empty
              </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col m6 offset-m3">
               <div class="checkbox">
-                <label><input type="checkbox" value="" id="checkbox-terms-and-conditions">Check here to continue</label>
+                <input type="checkbox" value="" id="checkbox-terms-and-conditions">
+                <label for="checkbox-terms-and-conditions">Check here to continue</label>
               </div>
-              <div class="form-group">
+              <div class="input-field">
                   <div id="paypal-button-container"></div>
               </div>
             </div>

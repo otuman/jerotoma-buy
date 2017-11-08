@@ -2,31 +2,25 @@
 @section('title')
   Checkout Response
 @endsection
-@section('breadcrumb')
-   <div class="col m5">
-      <a href="{{ url('/') }}" class="breadcrumb">Home</a>
-      <a href="{{ url('shop') }}" class="breadcrumb">Shop</a>
-      <a href="{{ url('checkout') }}" class="breadcrumb">Checkout</a>
+@section('below-header')
+   <div class="col m8 offset-m2">
+      <app-search></app-search>
    </div>
-    <div class="col m7">
-       <app-search></app-search>
-    </div>
+@endsection
 @endsection
 @section('content')
     <div class="container">
-        <div class="page-header text-center">
-           Confirmation
-        </div>
+        <h2 class="center-align">Confirmation</h2>
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                  <div class="alert alert-success">
+            <div class="col m12">
+                  <div class="card-panel green lighten-2 white-text text-darken-2">
                      <strong>Success!</strong> Thank you for choosing Pizzashop, you've successifully paid <strong>${{ $order->order_total }}</strong> for the order #{{$order->id}}
                   </div>
-                  <div class="panel panel-default">
-                    <div class="panel-heading">Customer information</div>
-                    <div class="panel-body">
+                  <div class="card-panel">
+                    <div class="card-title">Customer information</div>
+                    <div class="card-content">
                          <div class="table-responsive">
-                               <table class="table table-hover">
+                               <table class="table table striped bordered">
                                  <tbody>
                                    <tr>
                                       <td class="">Full name :</td>
@@ -51,65 +45,62 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-              <div class="panel panel-default">
-                <div class="panel-heading">Product(s)</div>
-                <div class="panel-body">
-                  <table class="table table-hover">
-                      <thead>
-                          <tr>
-                               <th>Name</th>
-                               <th>Price</th>
-                               <th>Quantity</th>
-                               <th>Total</th>
-                          </tr>
-                      </thead>
-
-                      <tbody>
-                          @foreach ($order->items as $item)
+                <div class="card-panel">
+                  <div class="card-title">Product(s)</div>
+                  <div class="card-content">
+                    <table class="table striped bordered">
+                        <thead>
                             <tr>
-                                <td>{{$item->item_name }}</td>
-                                <td>${{$item->item_price }}</td>
-                                <td>{{$item->item_qty}}</td>
-                                <td>${{$item->item_price * $item->item_qty }}</td>
+                                 <th>Name</th>
+                                 <th>Price</th>
+                                 <th>Quantity</th>
+                                 <th>Total</th>
                             </tr>
-                          @endforeach
-                       </tbody>
-                  </table>
+                        </thead>
+
+                        <tbody>
+                            @foreach ($order->items as $item)
+                              <tr>
+                                  <td>{{$item->item_name }}</td>
+                                  <td>${{$item->item_price }}</td>
+                                  <td>{{$item->item_qty}}</td>
+                                  <td>${{$item->item_price * $item->item_qty }}</td>
+                              </tr>
+                            @endforeach
+                         </tbody>
+                    </table>
+                  </div>
                 </div>
-              </div>
+                <div class="row">
+                        <div class="col m6 offset-m6">
+                          <div class="card-panel">
+                          <div class="card-title">Order Summary</div>
+                          <div class="card-content">
+                            <div class="table-responsive">
+                                  <table class="table striped bordered">
+                                    <tbody>
+                                      <tr>
+                                         <td class="">Subtotal :</td>
+                                         <td>${{ $order->order_total }}</td>
+                                      </tr>
+                                     <tr>
+                                         <td class="">HST :</td>
+                                         <td>${{ $order->order_tax_total }}</td>
+                                     </tr>
+                                     <tr>
+                                         <td class="">Total :</td>
+                                         <td class="">${{ $order->order_total }}</td>
+                                     </tr>
+                                  </tbody>
+                              </table>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
             </div>
         </div>
-        <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                  <div class="panel panel-default">
-                  <div class="panel-heading">Order Summary</div>
-                  <div class="panel-body">
-                    <div class="table-responsive">
-                          <table class="table table-hover">
-                            <tbody>
-                              <tr>
-                                 <td class="">Subtotal :</td>
-                                 <td>${{ $order->order_total }}</td>
-                              </tr>
-                             <tr>
-                                 <td class="">HST :</td>
-                                 <td>${{ $order->order_tax_total }}</td>
-                             </tr>
-                             <tr>
-                                 <td class="">Total :</td>
-                                 <td class="">${{ $order->order_total }}</td>
-                             </tr>
-                          </tbody>
-                      </table>
-                      </div>
-                   </div>
-                </div>
-             </div>
-          </div>
+
            <div class="spacer"></div>
     </div>
 @endsection

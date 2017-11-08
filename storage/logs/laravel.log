@@ -1,0 +1,164 @@
+[2017-11-08 20:22:31] local.INFO: array (
+  'first_name' => 'Otoman',
+  'last_name' => 'Nkomanya',
+  'address_1' => '12 Glenwood Crescent',
+  'address_2' => NULL,
+  'city' => 'Hamilton',
+  'country_code' => 'CA',
+  'postal_code' => 'L9C3J4',
+  'phone' => '2897751667',
+  'isDefault' => '0',
+  'special_note' => 'otomang@hotmail.com',
+  'state' => 'Yukon',
+)  
+[2017-11-08 20:22:35] local.INFO: array (
+  'id' => 'PAY-9DJ19479WA338235XLIBWOPA',
+  'intent' => 'sale',
+  'state' => 'approved',
+  'cart' => '2BV125108W842110U',
+  'payer' => 
+  array (
+    'payment_method' => 'paypal',
+    'status' => 'VERIFIED',
+    'payer_info' => 
+    array (
+      'email' => 'otomang-buyer@hotmail.com',
+      'first_name' => 'test',
+      'last_name' => 'buyer',
+      'payer_id' => '7UPLGWFQCBQGY',
+      'shipping_address' => 
+      array (
+        'recipient_name' => 'Otoman Nkomanya',
+        'line1' => '12 Glenwood Crescent',
+        'city' => 'Hamilton',
+        'state' => 'Yukon',
+        'postal_code' => 'L9C3J4',
+        'country_code' => 'CA',
+      ),
+      'country_code' => 'CA',
+    ),
+  ),
+  'transactions' => 
+  array (
+    0 => 
+    array (
+      'amount' => 
+      array (
+        'total' => '967.98',
+        'currency' => 'CAD',
+        'details' => 
+        array (
+          'subtotal' => '799.98',
+          'tax' => '168.00',
+          'shipping' => '0.00',
+          'insurance' => '0.00',
+          'handling_fee' => '0.00',
+          'shipping_discount' => '0.00',
+        ),
+      ),
+      'payee' => 
+      array (
+        'merchant_id' => '45FVN9PMXDYK2',
+        'email' => 'otomang-facilitator@hotmail.com',
+      ),
+      'description' => 'The payment transaction description.',
+      'custom' => 'EBAY_EMS_90048630024435',
+      'invoice_number' => '5',
+      'payment_options' => 
+      array (
+        'allowed_payment_method' => 'INSTANT_FUNDING_SOURCE',
+        'recurring_flag' => false,
+        'skip_fmf' => false,
+      ),
+      'item_list' => 
+      array (
+        'items' => 
+        array (
+          0 => 
+          array (
+            'name' => 'Playstation 4',
+            'sku' => '1',
+            'description' => 'Brown hat.',
+            'price' => '399.99',
+            'currency' => 'CAD',
+            'tax' => '0.00',
+            'quantity' => 2,
+          ),
+        ),
+        'shipping_address' => 
+        array (
+          'recipient_name' => 'Otoman Nkomanya',
+          'line1' => '12 Glenwood Crescent',
+          'city' => 'Hamilton',
+          'state' => 'Yukon',
+          'postal_code' => 'L9C3J4',
+          'country_code' => 'CA',
+        ),
+        'shipping_phone_number' => '2897751667',
+      ),
+      'related_resources' => 
+      array (
+        0 => 
+        array (
+          'sale' => 
+          array (
+            'id' => '2KB61649XR801484G',
+            'state' => 'pending',
+            'amount' => 
+            array (
+              'total' => '967.98',
+              'currency' => 'CAD',
+              'details' => 
+              array (
+                'subtotal' => '799.98',
+                'tax' => '168.00',
+              ),
+            ),
+            'payment_mode' => 'INSTANT_TRANSFER',
+            'reason_code' => 'PAYMENT_REVIEW',
+            'protection_eligibility' => 'INELIGIBLE',
+            'transaction_fee' => 
+            array (
+              'value' => '28.37',
+              'currency' => 'CAD',
+            ),
+            'parent_payment' => 'PAY-9DJ19479WA338235XLIBWOPA',
+            'create_time' => '2017-11-08T20:22:33Z',
+            'update_time' => '2017-11-08T20:22:33Z',
+            'links' => 
+            array (
+              0 => 
+              array (
+                'href' => 'https://api.sandbox.paypal.com/v1/payments/sale/2KB61649XR801484G',
+                'rel' => 'self',
+                'method' => 'GET',
+              ),
+              1 => 
+              array (
+                'href' => 'https://api.sandbox.paypal.com/v1/payments/sale/2KB61649XR801484G/refund',
+                'rel' => 'refund',
+                'method' => 'POST',
+              ),
+              2 => 
+              array (
+                'href' => 'https://api.sandbox.paypal.com/v1/payments/payment/PAY-9DJ19479WA338235XLIBWOPA',
+                'rel' => 'parent_payment',
+                'method' => 'GET',
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
+  'create_time' => '2017-11-08T20:22:34Z',
+  'links' => 
+  array (
+    0 => 
+    array (
+      'href' => 'https://api.sandbox.paypal.com/v1/payments/payment/PAY-9DJ19479WA338235XLIBWOPA',
+      'rel' => 'self',
+      'method' => 'GET',
+    ),
+  ),
+)  

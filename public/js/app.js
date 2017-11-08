@@ -53243,10 +53243,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+var home_url = window.location.origin;
+console.log(home_url);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      products: []
+      products: [],
+      _host: home_url
     };
   },
   mounted: function mounted() {
@@ -53255,12 +53258,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     processImageURL: function processImageURL(urlPart) {
-      var host = window.location.origin;
-      return host + '/storage/products/' + urlPart;
+      return home_url + '/storage/products/' + urlPart;
     },
     processSlugURL: function processSlugURL(urlPart) {
-      var host = window.location.origin;
-      return host + '/shop/' + urlPart;
+
+      return home_url + '/shop/' + urlPart;
+    },
+    addProductToWishlist: function addProductToWishlist(product) {
+      console.log(product.id);
+    },
+    addProductToCart: function addProductToCart(product) {
+      console.log(product.price);
+      console.log(product.image);
+      console.log(product.name);
+      console.log(product.id);
+      axios.post('/cart', {
+        'id': product.id,
+        'quantity': 1,
+        'name': product.name,
+        'price': product.price
+      }).then(function (response) {
+        // console.log(response.data);
+        if (response.data.success) {
+          location.assign(home_url + '/cart');
+        }
+      });
     }
   },
   created: function created() {
@@ -53269,7 +53291,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     axios.get('/products').then(function (response) {
 
       _this.products = response.data;
-      console.log(_this.products);
+      // console.log(this.products);
       //console.log(response);
     });
   }
@@ -53345,7 +53367,43 @@ var render = function() {
                 _c("p", [_vm._v(_vm._s(product.name))])
               ]),
               _vm._v(" "),
-              _vm._m(1, true)
+              _c("div", { staticClass: "card-action" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "btn-floating btn waves-effect waves-light red",
+                    on: {
+                      click: function($event) {
+                        _vm.addProductToCart(product)
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "large material-icons" }, [
+                      _vm._v("add_shopping_cart")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "btn-floating btn waves-effect waves-light red right",
+                    on: {
+                      click: function($event) {
+                        _vm.addProductToWishlist(product)
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "large material-icons" }, [
+                      _vm._v("favorite")
+                    ])
+                  ]
+                )
+              ])
             ])
           ])
         })
@@ -53360,28 +53418,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("p", [
       _c("a", { attrs: { href: "" } }, [_vm._v("This is a link")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-action" }, [
-      _c(
-        "a",
-        { staticClass: "btn-floating btn waves-effect waves-light red" },
-        [
-          _c("i", { staticClass: "large material-icons" }, [
-            _vm._v("add_shopping_cart")
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        { staticClass: "btn-floating btn waves-effect waves-light red right" },
-        [_c("i", { staticClass: "large material-icons" }, [_vm._v("favorite")])]
-      )
     ])
   }
 ]
@@ -53481,7 +53517,7 @@ exports = module.exports = __webpack_require__(53)(undefined);
 
 
 // module
-exports.push([module.i, "\n#search[data-v-48af2888]{\n    margin-right: 20px;\n    padding-left:8px;\n    width:90%;\n    height: 25px;\n}\n#search[data-v-48af2888]:focus{\n    border-bottom: 1px solid #ee6e73;\n    -webkit-box-shadow: 0 1px 0 0 #ee6e73;\n            box-shadow: 0 1px 0 0 #ee6e73;\n    webkit box-shadow:0 1px 0 0 #ee6e73;\n}\n#search[data-v-48af2888], .search-wrapper[data-v-48af2888], .card[data-v-48af2888]{\n    color: rgba(0, 0, 0, 0.7);\n    font-size:20px;\n}\n.search-wrapper[data-v-48af2888]{\n    padding-left: 15px;\n    padding-right: 15px;\n    border-radius:10px;\n    background-color: #FFF;\n    width: auto;\n    height: 56px;\n    margin-top: 5px;\n}\n.search-panel[data-v-48af2888]{\n    position: absolute;\n    right:auto;\n    padding: 10px;\n    margin: 0.5rem 0 1rem 0;\n    border-radius: 2px;\n    background-color: #fff;\n    width: 50rem;\n    z-index: 200;\n}\n.aligolia[data-v-48af2888]{\n    width:auto;\n    height:15px;\n}\n.list-aligoria[data-v-48af2888]{\n     width:auto;\n     height:20px;\n}\n.collection .collection-item.list-aligoria[data-v-48af2888] {\n    min-height: 50px;\n    padding-left: 72px;\n    position: relative;\n}\n", ""]);
+exports.push([module.i, "\n#search[data-v-48af2888]{\n    margin-right: 20px;\n    padding-left:8px;\n    margin-bottom: 15px !important;\n    width: 85%;\n    height: 40px;\n    background-color: #FFF;\n}\n#search[data-v-48af2888]:focus{\n    border-bottom: 1px solid #ee6e73;\n    -webkit-box-shadow: 0 1px 0 0 #ee6e73;\n            box-shadow: 0 1px 0 0 #ee6e73;\n    webkit box-shadow:0 1px 0 0 #ee6e73;\n}\n#search[data-v-48af2888], .search-wrapper[data-v-48af2888], .card[data-v-48af2888]{\n    color: rgba(0, 0, 0, 0.7);\n    font-size:20px;\n}\n.search-wrapper[data-v-48af2888]{\n    padding-left: 15px;\n    padding-right: 15px;\n    border-radius: 10px;\n    background-color: #FFF;\n    width: auto;\n    height: 40px;\n    margin-top: 12px;\n}\n.search-panel[data-v-48af2888]{\n    position: absolute;\n    right:auto;\n    padding: 10px;\n    margin: 0.5rem 0 1rem 0;\n    border-radius: 2px;\n    background-color: #fff;\n    width: 50rem;\n    z-index: 200;\n}\n.aligolia[data-v-48af2888]{\n    width:auto;\n    height:15px;\n}\n.list-aligoria[data-v-48af2888]{\n     width:auto;\n     height:20px;\n}\n.collection .collection-item.list-aligoria[data-v-48af2888] {\n    min-height: 50px;\n    padding-left: 72px;\n    position: relative;\n}\n", ""]);
 
 // exports
 
@@ -53915,7 +53951,7 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "input-field" }, [
+      _c("div", {}, [
         _c("i", { staticClass: "material-icons right prefix" }, [
           _vm._v("search")
         ]),
