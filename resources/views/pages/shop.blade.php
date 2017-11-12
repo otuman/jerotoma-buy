@@ -7,7 +7,6 @@
       <app-search></app-search>
    </div>
 @endsection
-@endsection
 @section('content')
 
     <div class="container">
