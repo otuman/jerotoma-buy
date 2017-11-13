@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+//var focus = require('vue-focus');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

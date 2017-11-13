@@ -34,7 +34,7 @@
 <body>
   <div id="app">
     @include('layouts.header')
-    @include('layouts.breadcrumb')
+    @include('layouts.below-header')
     <div class="shadow-wrapper"></div>
      @yield('content')
     @include('layouts.footer')

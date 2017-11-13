@@ -1,8 +1,6 @@
 @extends('layouts.master')
 @section('below-header')
-   <div class="col m8 offset-m2">
-      <app-search></app-search>
-   </div>
+     <app-search></app-search>   
 @endsection
 @section('content')
         <app-home></app-home>  <!--Vue js component   https://alligator.io/vuejs/component-lifecycle/ -->

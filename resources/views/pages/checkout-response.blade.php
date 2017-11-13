@@ -3,9 +3,7 @@
   Checkout Response
 @endsection
 @section('below-header')
-   <div class="col m8 offset-m2">
-      <app-search></app-search>
-   </div>
+     <app-search></app-search>
 @endsection
 @endsection
 @section('content')
