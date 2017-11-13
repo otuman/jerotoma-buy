@@ -29,7 +29,7 @@
                     <div class="col m3">
                         <div class="card">
                             <div class="card-image waves-effect waves-block waves-light">
-                                <a href="{{ url('shop', [$product->slug]) }}"><img src="{{ asset('storage/products/' . $product->image) }}" alt="product" class="responsive-img activator"></a>
+                                <a href="{{ url('shop', [$product->slug]) }}"><img src="{{ asset('storage/products/'.$product->image) }}" alt="{{$product->name}}" class="responsive-img activator"></a>
                             </div> <!-- end caption -->
                             <div class="card-content">
                               <span class="activator grey-text text-darken-4">{{ $product->name }}<i class="material-icons right">more_vert</i></span>

@@ -180,10 +180,12 @@
                // - paypal.FUNDING.CARD
                // - paypal.FUNDING.CREDIT
                // - paypal.FUNDING.ELV
-            /*   funding: {
+               /*
+               funding:{
                    allowed: [ paypal.FUNDING.CARD, paypal.FUNDING.CREDIT ],
                    disallowed: [ ]
-               },*/
+               },
+               */
                // PayPal Client IDs - replace with your own
               // Create a PayPal app: https://developer.paypal.com/developer/applications/create
               client:{

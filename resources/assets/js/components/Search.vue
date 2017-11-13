@@ -1,9 +1,12 @@
 <template>
-   <div v-bind:class="{'search-wrapper':!search.hasOutput,'card-panel search-panel':search.hasOutput}">
-      <div class="">
+     <div class="row">
+       <div class="col m12">
+        <div v-bind:class="{'search-wrapper':!search.hasOutput,'card-panel search-panel':search.hasOutput}">
         <i class="material-icons right prefix">search</i>
-        <input id="search" v-model="search.searchKeyWord" v-on:keyup="searchData()" v-on:keyup.enter="searchData()" type="text" placeholder="Search products" required>
+          <input id="search" v-model="search.searchKeyWord" v-on:keyup="searchData()" v-on:keyup.enter="searchData()" type="text" placeholder="Search products" required>
+        </div>
       </div>
+
       <div v-if="search.hasOutput" class="collection search-output">
         <a v-for="item in search.response" v-bind:href="processSlugUrl(item.slug)" class="collection-item avatar">
             <img v-bind:src="processImgUrl(item.image)" alt="" class="circle">
@@ -13,8 +16,8 @@
             </p>
         </a>
         <a href="#!" class="collection-item avatar list-aligoria"><span class="secondary-content"><img src="/storage/logos/search-by-algolia.png" class="aligolia" alt=""></span></a>
-      </div>
-   </div>
+    </div>
+    </div>
 </template>
 <script>
     export default {
@@ -70,7 +73,10 @@
     }
 </script>
 <style scoped>
-  #search{
+
+  input#search{
+    position: relative;
+    bottom: 20px;
     margin-right: 20px;
     padding-left:8px;
     margin-bottom: 15px !important;
