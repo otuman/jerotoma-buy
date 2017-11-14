@@ -17,8 +17,16 @@ class CreateProductsTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->text('description');
+            $table->string('short_description')->nullable();;
             $table->decimal('price', 10, 2);
-            $table->string('image')->unique();
+            $table->string('sale_price')->nullable();;
+            $table->string('regular_price')->nullable();;
+            //$table->string('images');
+            //$table->string('categories')->nullable();;
+            // $table->string('attributes')->nullable();;
+            // $table->string('related_ids')->nullable();;   //draft, pending, publish private
+            $table->string('status')->default('publish');   //draft, pending, publish private
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
     }
