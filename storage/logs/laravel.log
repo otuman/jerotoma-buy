@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [2017-11-14 01:08:34] production.ERROR: SQLSTATE[HY000] [1044] Access denied for user ''@'localhost' to database 'forge' {"exception":"[object] (Doctrine\\DBAL\\Driver\\PDOException(code: 1044): SQLSTATE[HY000] [1044] Access denied for user ''@'localhost' to database 'forge' at C:\\xampp\\htdocs\\jerotoma-buy\\vendor\\doctrine\\dbal\\lib\\Doctrine\\DBAL\\Driver\\PDOConnection.php:47, PDOException(code: 1044): SQLSTATE[HY000] [1044] Access denied for user ''@'localhost' to database 'forge' at C:\\xampp\\htdocs\\jerotoma-buy\\vendor\\doctrine\\dbal\\lib\\Doctrine\\DBAL\\Driver\\PDOConnection.php:43)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\jerotoma-buy\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(64): Doctrine\\DBAL\\Driver\\PDOConnection->__construct('mysql:host=127....', 'forge', '', Array)
@@ -1188,3 +1189,5 @@
 #54 C:\\xampp\\htdocs\\jerotoma-buy\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
+=======
+>>>>>>> 40afa8bf968f022f066d46df1f4cb93927fcb60a
