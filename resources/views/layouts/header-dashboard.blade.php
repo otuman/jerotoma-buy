@@ -1,18 +1,27 @@
      <nav>
        <div class="container">
          <div class="nav-wrapper">
-            <a href="{{route('/')}}" class="brand-logo">Logo</a>
-            <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
 
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li class="{{ set_active('shop') }}"><a href="{{route('shop')}}">Shop</a></li>
-              <li class="{{ set_active('wishlist') }}"><a href="{{ url('/wishlist') }}" class=""><i class="small material-icons left" style="margin-right:0px;">favorite</i><span class="badge white-text" data-badge-caption="items">({{ Cart::instance('wishlist')->count(false) }})</span></a></li>
-              <li class="{{ set_active('cart') }}"><a href="{{ url('/cart') }}" class=""><i class="small material-icons left" style="margin-right:0px;">shopping_cart</i><span class="badge white-text" data-badge-caption="items">({{ Cart::instance('default')->count(false) }})</span></a></li>
-               <!-- Dropdown Trigger -->
-              <li><a class="dropdown-button" href="#!" data-beloworigin="true" data-constrainwidth='false' data-activates="dropdown-web-menu">
-                {{Auth::check() ? Auth::user()->firstName : 'My Account' }}<i class="material-icons right">arrow_drop_down</i></a>
-              </li>
-            </ul>
+           <div class="row">
+              <div class="col m6">
+                   <a href="{{route('/')}}" class="brand-logo">Logo</a>
+                   <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+                  <ul id="nav-mobile-left" class="right hide-on-med-and-down">
+                    <li class="{{ set_active('shop') }}"><a href="{{route('shop')}}">Order Tracker</a></li>
+                    <li class="{{ set_active('shop') }}"><a href="{{route('shop')}}">My Orders</a></li>
+                    <li class="{{ set_active('shop') }}"><a href="{{route('shop')}}">Shop now</a></li>
+                  </ul>
+              </div>
+              <div class="col m6">
+                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href=""><span class="new badge">4</span><i class="small material-icons left" style="margin-right:0px;">notifications</i></a></li>
+                    <!-- Dropdown Trigger -->
+                   <li><a class="dropdown-button" href="#!" data-beloworigin="true" data-constrainwidth='false' data-activates="dropdown-web-menu">
+                     {{Auth::check() ? Auth::user()->firstName : 'My Account' }}<i class="material-icons right">arrow_drop_down</i></a>
+                   </li>
+                 </ul>
+              </div>
+           </div>
             <ul class="side-nav" id="mobile-menu">
               <!-- Dropdown Trigger -->
               <li><a class="dropdown-button" data-beloworigin="true" href="#!" data-activates="dropdown-mobile-menu">
@@ -21,8 +30,6 @@
               <li class="{{ set_active('shop') }}"><a href="{{route('shop')}}">Shop</a></li>
               <li class="{{ set_active('wishlist') }}"><a href="{{ url('/wishlist') }}" class="">Wishlist ({{ Cart::instance('wishlist')->count(false) }})</a></li>
               <li class="{{ set_active('cart') }}"><a href="{{ url('/cart') }}" class="">Cart ({{ Cart::instance('default')->count(false) }})</a></li>
-
-
             </ul>
           </div>
       </div>

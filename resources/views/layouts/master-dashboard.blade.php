@@ -19,26 +19,19 @@
     </title>   <!-- Styles -->
       @include('layouts.metadata')
       @yield('extra-css')
-      <style>
-
-      </style>
 </head>
 <body>
   <div id="app">
-    @include('layouts.header')
-    @include('layouts.below-header')
-    <div class="shadow-wrapper"></div>
-     @yield('content')
+    @include('layouts.header-dashboard')
+    @yield('content')
     @include('layouts.footer')
   </div>
   <!-- JavaScript -->
   <script src="{{ asset('/js/app.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
-  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-  @yield('extra-js')
+   @yield('extra-js')
   <script>
     $(document).ready(function(){
-          $('.button-collapse').sideNav();         
+
         });
   </script>
 </body>

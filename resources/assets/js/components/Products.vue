@@ -33,8 +33,10 @@
             _host: home_url
           }
          },
+        props:['product_list'],
          mounted() {
-            //console.log('notification component.')
+            this.products= JSON.parse(this.product_list);
+            console.log(this.products);
          },
          methods:{
            processImageURL:(urlPart)=>{
@@ -45,33 +47,23 @@
               return home_url+'/shop/'+urlPart;
            },
            addProductToWishlist:(product)=>{
-             console.log(product.id);
+            // console.log(product.id);
            },
            addProductToCart:(product)=>{
-             console.log(product.price);
-             console.log(product.image);
-             console.log(product.name);
-             console.log(product.id);
-             axios.post('/cart',{
-               'id':product.id,
-               'quantity': 1,
-               'name':product.name,
-               'price':product.price
-             }).then((response)=>{
-              // console.log(response.data);
-               if(response.data.success){
-                 location.assign(home_url+'/cart');
-               }
-             });
+                axios.post('/cart',{
+                     'id':product.id,
+                     'quantity': 1,
+                     'name':product.name,
+                     'price':product.price
+                 }).then((response)=>{
+                     if(response.data.success){
+                       location.assign(home_url+'/cart');
+                     }
+                 });
           }
          },
          created(){
-            axios.get('/products').then((response)=>{
 
-                this.products = response.data;
-                // console.log(this.products);
-                 //console.log(response);
-            });
          }
     }
 </script>
