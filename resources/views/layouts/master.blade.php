@@ -9,7 +9,7 @@
     <style type="text/css" media="all">
       @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
     </style>
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/materialize/css/app.css') }}" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
       <!-- CSRF Token -->
@@ -32,13 +32,13 @@
     @include('layouts.footer')
   </div>
   <!-- JavaScript -->
-  <script src="{{ asset('/js/app.js') }}"></script>
+  <script src="{{ asset('assets/vendors/materialize/js/app.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
   <script src="https://www.paypalobjects.com/api/checkout.js"></script>
   @yield('extra-js')
   <script>
     $(document).ready(function(){
-          $('.button-collapse').sideNav();         
+          $('.button-collapse').sideNav();
         });
   </script>
 </body>

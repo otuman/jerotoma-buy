@@ -1,4 +1,6 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/assets/vendors/materialize/js/app.js": "/assets/vendors/materialize/js/app.js",
+    "/assets/vendors/bootstrap/css/app.css": "/assets/vendors/bootstrap/css/app.css",
+    "/assets/vendors/materialize/css/app.css": "/assets/vendors/materialize/css/app.css",
+    "/assets/vendors/bootstrap/js/app.js": "/assets/vendors/bootstrap/js/app.js"
 }

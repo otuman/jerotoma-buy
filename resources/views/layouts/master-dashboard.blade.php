@@ -9,7 +9,7 @@
     <style type="text/css" media="all">
       @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
     </style>
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/bootstrap/css/app.css') }}" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
       <!-- CSRF Token -->
@@ -27,7 +27,7 @@
     @include('layouts.footer')
   </div>
   <!-- JavaScript -->
-  <script src="{{ asset('/js/app.js') }}"></script>
+  <script src="{{ asset('assets/vendors/bootstrap/js/app.js') }}"></script>
    @yield('extra-js')
   <script>
     $(document).ready(function(){
