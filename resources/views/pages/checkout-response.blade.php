@@ -5,7 +5,6 @@
 @section('below-header')
      <app-search></app-search>
 @endsection
-@endsection
 @section('content')
     <div class="container">
         <h2 class="center-align">Confirmation</h2>
