@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Order;
-class User extends \TCG\Voyager\Models\User{
+class User extends \TCG\Voyager\Models\User {
     use Notifiable;
 
     /**
@@ -25,6 +25,9 @@ class User extends \TCG\Voyager\Models\User{
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+
 
     public function orders(){
         return $this->hasMany(Order::class, 'user_id');

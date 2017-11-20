@@ -7,12 +7,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
 use Ixudra\Curl\Facades\Curl;
 use Illuminate\Http\Response;
+use App\Events\NewOrderCreated;
+use App\Events\PaymentCompleted;
+
 use App\Helpers;
 use App\Item;
 use App\Order;
+use App\User;
 use App\Shipping;
 use Cart;
 use Auth;
+
 
 class CheckoutController extends Controller
 {
@@ -95,8 +100,9 @@ class CheckoutController extends Controller
                ]
          );
 
-        $order = $this->createOrder($createOrderItems);
-
+         $order = $this->createOrder($createOrderItems);
+         $user  = User::find($order->user_id);
+         event(new NewOrderCreated($user,$order));
 
          $data = array(
            'payer_id'=>$payerID,
@@ -110,15 +116,15 @@ class CheckoutController extends Controller
          //$headers = array( 'MyFirstHeader: 123', 'MySecondHeader: 456' )
          //$data = array( 'foz' => 'baz' )
          //$url = 'http://www.foo.com/bar'
-     $jsonData = $this->executePaymant($url, $data, $headers);
-      Log::info($jsonData);
-       //Log::info($accesstoken);
+         $jsonData = $this->executePaymant($url, $data, $headers);
+         Log::info($jsonData);
+        //Log::info($accesstoken);
       if(($jsonData['state'] == 'approved') && ($jsonData['payer']['status'] == 'VERIFIED') ){
          $order  = Order::find($jsonData['transactions'][0]['invoice_number']);
          $order->status = 'paid';
          $order->cart = $jsonData['cart'];
          $order->save();
-
+         event(new PaymentCompleted($user,$order));
       }
       return response()->json($jsonData);
     }
@@ -329,7 +335,7 @@ class CheckoutController extends Controller
              $itemdb->options = "Numerilize";
              $itemdb->save();
         }
-        Log::info($data['shipping']);
+        //Log::info($data['shipping']);
         $shipping = new Shipping();
         $shipping->user_id = $data['user_id'];
         $shipping->order_id = $order->id;
