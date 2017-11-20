@@ -170,6 +170,7 @@ return [
          Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
          Ixudra\Curl\CurlServiceProvider::class,
          Laravel\Scout\ScoutServiceProvider::class,
+         Yajra\DataTables\DataTablesServiceProvider::class,
        /*
          * Application Service Providers...
          */
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Curl'=> Ixudra\Curl\Facades\Curl::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];

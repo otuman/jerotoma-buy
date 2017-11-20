@@ -42,6 +42,10 @@
         },
         mounted() {
             console.log('Component mounted.')
+            Echo.private(`order.${orderId}`)
+                .listen('NewOrderCreated', (e) => {
+                    console.log("Order created");
+                });
         }
     }
 </script>

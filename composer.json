@@ -18,7 +18,8 @@
         "laravel/scout": "^3.0",
         "laravel/tinker": "~1.0",
         "pusher/pusher-php-server": "~3.0",
-        "tcg/voyager": "^1.0"
+        "tcg/voyager": "^1.0",
+        "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

@@ -22,5 +22,12 @@ Vue.component('products', require('./components/Products.vue'));
 Vue.component('app-search', require('./components/Search.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    mounted(){
+      console.log('Component mounted.')
+      Echo.private(`order.${orderId}`)
+          .listen('NewOrderCreated', (e) => {
+              console.log("Order created");
+          });
+    }
 });
