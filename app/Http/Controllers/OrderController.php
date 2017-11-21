@@ -102,6 +102,28 @@ class OrderController extends Controller
    */
     public function getJsonOrders()
     {
-        return Datatables::of(Order::all())->make(true);
+        $order = Order::all();
+
+
+       return Datatables::of($order)
+                ->addColumn('action', function(Order $order){
+                            return '<a href="javascript:;" title="Delete" class="btn btn-sm btn-danger pull-right delete" data-id="'.$order->id.'" id="delete-1">
+                                    <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Delete</span>
+                                   </a>
+                                   <a href="'.url("admin/orders").'/'.$order->id.'/edit" title="Edit" class="btn btn-sm btn-primary pull-right edit">
+                                     <i class="voyager-edit"></i> <span class="hidden-xs hidden-sm">Edit</span>
+                                   </a>
+                                   <a href="'.url("admin/orders").'/'.$order->id.'" title="View" class="btn btn-sm btn-warning pull-right">
+                                      <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">View</span>
+                                   </a>';
+                })
+               //->addColumn('check', '<input type="checkbox" name="selected_users[]" value="">')
+               ->removeColumn('cart')
+               ->removeColumn('paymentID')
+               ->removeColumn('payerID')
+               ->removeColumn('paymentToken')
+               ->removeColumn('accessToken')
+               ->removeColumn('intent')
+               ->make(true);
     }
 }
