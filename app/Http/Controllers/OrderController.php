@@ -117,7 +117,13 @@ class OrderController extends Controller
                                       <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">View</span>
                                    </a>';
                 })
-               //->addColumn('check', '<input type="checkbox" name="selected_users[]" value="">')
+               ->editColumn('status', function(Order $order){
+                 return $this->getOrderStatus($order->status);
+               })
+               ->addColumn('checkmark', function(Order $order){
+                 return '<input type="checkbox" name="selected_users[]" value="">';
+               })
+               ->rawColumns(['checkmark', 'action','status'])
                ->removeColumn('cart')
                ->removeColumn('paymentID')
                ->removeColumn('payerID')
@@ -126,4 +132,25 @@ class OrderController extends Controller
                ->removeColumn('intent')
                ->make(true);
     }
+
+    public function getOrderStatus($status){
+        $options  = array(
+          'paid','unpaid','pending'
+        );
+        $select  = '<select class="form-control" id="sel1">';
+
+           foreach ($options as $key => $option) {
+            if ($option == $status) {
+              $select .= '<option selected value ='.$option.'>'.$option.'</option>';
+            }else{
+              $select .= '<option value ='.$option.'>'.$option.'</option>';
+            }
+           }
+          $select .= '</select>';
+
+
+
+      return $select;
+    }
+
 }

@@ -19,6 +19,7 @@
                                     <thead>
                                         <tr>
                                            <!-- <th></th> -->
+                                           <th></th>
                                             <th>Id</th>
                                             <th>Title</th>
                                             <th>Order Total</th>
@@ -47,13 +48,13 @@
               serverSide: true,
               ajax: '{!! route('json/orders') !!}',
               columns: [
-                 // { data: 'check', name: 'check'},
+                  { data: 'checkmark', name: 'checkmark',printable:true,},
                   { data: 'id', name: 'id' },
                   { data: 'title', name: 'title' },
                   { data: 'status', name: 'status' },
                   { data: 'created_at', name: 'created_at' },
                   { data: 'updated_at', name: 'updated_at' },
-                  { data: 'action', name: 'action', printable:true,orderable: false, searchable: false }
+                  { data: 'action', name:'action', printable:true,orderable: false, searchable: false }
               ]
           });
       });
