@@ -48,7 +48,7 @@ Route::post('nested-object', 'CheckoutController@testNested')->name('nested-obje
 Route::group(['prefix' => 'admin'], function () {
      Voyager::routes();
     //Overrides routes
-     Route::get('orders/edit','OrderController@edit')->name('orders/edit');
+     Route::resource('orders','OrderController');
    });
 Route::get('json/orders','OrderController@getJsonOrders')->name('json/orders');
 Auth::routes();

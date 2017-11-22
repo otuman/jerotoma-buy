@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Order;
 use Yajra\Datatables\Datatables;
+use Request as DataRequest;
 
 
 class OrderController extends Controller
@@ -52,9 +53,19 @@ class OrderController extends Controller
       */
      public function show($id)
      {
-          $order = Order::find($id);
+         $order = Order::find($id);
 
-          logger('I got here');
+         if(DataRequest::ajax()){
+        $response = response()->json([
+               'id' => $order->id,
+               'title' => $order->title,
+               'user_ide' => $order->user_id,
+               'payment_method' => $order->payment_method,
+               'total' => $order->order_total,
+               'status' => $order->status
+             ]);
+         return $response;
+       }
 
          return view('vendor/voyager/orders/edit-add', compact('order'));
      }
@@ -67,7 +78,7 @@ class OrderController extends Controller
       */
      public function edit($id)
      {
-         //
+          return view('vendor/voyager/orders/edit-add');
      }
 
      /**
@@ -107,7 +118,7 @@ class OrderController extends Controller
 
        return Datatables::of($order)
                 ->addColumn('action', function(Order $order){
-                            return '<a href="javascript:;" title="Delete" class="btn btn-sm btn-danger pull-right delete" data-id="'.$order->id.'" id="delete-1">
+                            return '<a href="javascript:;" title="Delete" class="btn btn-sm btn-danger pull-right delete" onclick="removeRow('.$order->id.')" data-id="'.$order->id.'" id="delete-1">
                                     <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Delete</span>
                                    </a>
                                    <a href="'.url("admin/orders").'/'.$order->id.'/edit" title="Edit" class="btn btn-sm btn-primary pull-right edit">
@@ -121,7 +132,7 @@ class OrderController extends Controller
                  return $this->getOrderStatus($order->status);
                })
                ->addColumn('checkmark', function(Order $order){
-                 return '<input type="checkbox" name="selected_users[]" value="">';
+                 return '<input class="order-checked-box" type="checkbox" name="selected_orders[]" value="'.$order->id.'">';
                })
                ->rawColumns(['checkmark', 'action','status'])
                ->removeColumn('cart')
@@ -147,9 +158,6 @@ class OrderController extends Controller
             }
            }
           $select .= '</select>';
-
-
-
       return $select;
     }
 
