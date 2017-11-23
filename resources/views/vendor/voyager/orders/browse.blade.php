@@ -143,6 +143,12 @@
       } else alert('Unknown row id.');
     }
 
+     function getSelectedStatus(id) {
+       if ( 'undefined' != typeof id ) {
+            var newStatus = $("#change-status-"+id).val();
+            console.log(newStatus+' '+ id);
+       }else alert('Unknown row id.');
 
+    }
     </script>
 @stop

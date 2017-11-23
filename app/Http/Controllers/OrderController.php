@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Route;
 use App\Order;
 use Yajra\Datatables\Datatables;
 use Request as DataRequest;
@@ -10,8 +11,13 @@ use Request as DataRequest;
 
 class OrderController extends Controller
 {
+
+     public $currentRoute;
+
      public function __construct(){
-        $this->middleware('auth');
+         $route = Route::current();
+         $this->currentRoute = $route->getName();
+         $this->middleware('auth');
      }
 
      /**
@@ -31,7 +37,10 @@ class OrderController extends Controller
       */
      public function create()
      {
-         return view('vendor/voyager/orders/edit-add');
+         $response =(object)[
+           'currentRoute'=>$this->currentRoute
+         ];
+         return view('vendor/voyager/orders/edit-add', compact('response'));
      }
 
      /**
@@ -78,7 +87,12 @@ class OrderController extends Controller
       */
      public function edit($id)
      {
-          return view('vendor/voyager/orders/edit-add');
+            $response =(object)[
+              'order'=>Order::find($id),
+              'currentRoute'=>$this->currentRoute
+            ];
+
+         return view('vendor/voyager/orders/edit-add', compact('response'));
      }
 
      /**
@@ -129,7 +143,7 @@ class OrderController extends Controller
                                    </a>';
                 })
                ->editColumn('status', function(Order $order){
-                 return $this->getOrderStatus($order->status);
+                 return $this->getOrderStatus($order);
                })
                ->addColumn('checkmark', function(Order $order){
                  return '<input class="order-checked-box" type="checkbox" name="selected_orders[]" value="'.$order->id.'">';
@@ -144,14 +158,14 @@ class OrderController extends Controller
                ->make(true);
     }
 
-    public function getOrderStatus($status){
+    public function getOrderStatus($order){
         $options  = array(
           'paid','unpaid','pending'
         );
-        $select  = '<select class="form-control" id="sel1">';
+        $select  = '<select passive="true" class="form-control" id="change-status-'.$order->id.'" onchange=getSelectedStatus('.$order->id.')>';
 
            foreach ($options as $key => $option) {
-            if ($option == $status) {
+            if($option == $order->status) {
               $select .= '<option selected value ='.$option.'>'.$option.'</option>';
             }else{
               $select .= '<option value ='.$option.'>'.$option.'</option>';
